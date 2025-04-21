@@ -1,10 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-}
-
-@layer base {
-}
-
-@layer utilities {
+  --color-primary: #a47864;
+  --color-black: #000000;
+  --color-white: #ffffff;
 }
