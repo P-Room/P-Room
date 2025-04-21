@@ -1,7 +1,12 @@
+'use client'
+
 import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 function WriteButton() {
+  const router = useRouter()
+
   return (
     <div>
       <button
@@ -11,6 +16,7 @@ function WriteButton() {
           'absolute right-12 bottom-12',
           'cursor-pointer'
         )}
+        onClick={() => router.push('/WriteResume')}
       >
         <Image
           src="/icons/write-button.svg"
