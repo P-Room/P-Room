@@ -1,5 +1,9 @@
+'use client'
+
 import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
+import 'react-datepicker/dist/react-datepicker.css'
+import CustomDatePicker from './CustomDatePicker'
 
 interface ResumeInfoProps {
   sort: '기업' | '공고 링크' | '직무' | '요구 경력' | '기간'
@@ -36,11 +40,17 @@ function ResumeInfo({ sort }: ResumeInfoProps) {
       <label htmlFor={sort} className={tm('font-bold', 'w-25')}>
         {sort}
       </label>
-      <input
-        id={sort}
-        placeholder={`${sort} 정보를 입력해주세요.`}
-        className={tm('py-1 px-1 w-full')}
-      />
+      {sort === '기간' ? (
+        <>
+          <CustomDatePicker sort={sort} />
+        </>
+      ) : (
+        <input
+          id={sort}
+          placeholder={`${sort} 정보를 입력해주세요.`}
+          className={tm('py-1 px-1 w-4/5')}
+        />
+      )}
     </div>
   )
 }
