@@ -2,6 +2,7 @@ import { tm } from '@/utils/tw-merge'
 import { forwardRef, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import { ko } from 'date-fns/locale/ko'
+import 'react-datepicker/dist/react-datepicker.css'
 
 interface CustomDatePickerProps {
   sort: '기간'
@@ -43,7 +44,9 @@ function CustomDatePicker({ sort }: CustomDatePickerProps) {
       endDate={endDate}
       onChange={(date) => setSelectedDates(date)}
       customInput={<CustomInput placeholder={`${sort} 정보를 입력해주세요.`} />}
+      shouldCloseOnSelect
       wrapperClassName="w-4/5"
+      popperPlacement="bottom-start"
     />
   )
 }

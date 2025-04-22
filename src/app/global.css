@@ -5,3 +5,40 @@
   --color-black: #000000;
   --color-white: #ffffff;
 }
+
+@layer utilities {
+  .react-datepicker__day--today {
+    background-color: theme('colors.primary') !important;
+    color: white !important;
+    border-radius: 999px !important;
+  }
+
+  .react-datepicker__day--in-range {
+    background-color: theme('colors.primary') !important;
+    color: white !important;
+    border-radius: 999px !important;
+  }
+
+  .react-datepicker__day--in-selecting-range {
+    background-color: theme('colors.primary') !important;
+    color: white !important;
+
+    border-radius: 999px !important;
+  }
+
+  .react-datepicker__day--range-start,
+  .react-datepicker__day--range-end {
+    background-color: theme('colors.primary') !important;
+    color: white !important;
+    border-radius: 999px !important;
+  }
+
+  .react-datepicker__day--in-range:not(.react-datepicker__day--range-start):not(
+      .react-datepicker__day--range-end
+    ) {
+    background-color: theme('colors.primary') !important;
+    opacity: 50% !important;
+    color: white !important;
+    border-radius: 999px !important;
+  }
+}
