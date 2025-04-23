@@ -82,7 +82,11 @@ function ResumeDetail() {
         onClick={handleAddDetail}
         ref={detailAddButton}
         aria-label="문항 추가"
-        className={tm('bg-primary', 'flex justify-center w-1/3 mx-auto mt-16')}
+        className={tm(
+          'bg-primary',
+          'flex justify-center w-1/5 mx-auto mt-16',
+          'py-2 rounded-2xl'
+        )}
       >
         <Image src="/icons/add-detail.svg" alt="" width={48} height={48} />
       </button>
