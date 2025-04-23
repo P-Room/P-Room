@@ -11,7 +11,7 @@ function ResumeDetail() {
   }
 
   return (
-    <div className={tm('flex flex-col w-3/5 mx-auto relative')}>
+    <div className={tm('flex flex-col w-3/5 mx-auto gap-4 relative')}>
       <div className={tm('flex w-4/5 ml-0 items-center gap-1')}>
         <p className="text-primary font-bold">1.</p>
         <label htmlFor="1" className="sr-only">
@@ -24,6 +24,7 @@ function ResumeDetail() {
           className={tm('py-1 px-1 w-full', 'text-primary font-bold')}
         />
       </div>
+      <p className={tm('text-secondary font-bold')}>#해시태그</p>
       <label htmlFor="2" className="sr-only">
         내용을 입력해주세요
       </label>
