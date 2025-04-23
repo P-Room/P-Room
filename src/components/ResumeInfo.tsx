@@ -4,6 +4,7 @@ import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
 import 'react-datepicker/dist/react-datepicker.css'
 import CustomDatePicker from './CustomDatePicker'
+import CustomDropdown from './CustomDropdown'
 
 interface ResumeInfoProps {
   sort: '기업' | '공고 링크' | '직무' | '요구 경력' | '기간'
@@ -44,8 +45,11 @@ function ResumeInfo({ sort }: ResumeInfoProps) {
         <>
           <CustomDatePicker sort={sort} />
         </>
+      ) : sort === '요구 경력' ? (
+        <CustomDropdown className={tm('w-4/5')} />
       ) : (
         <input
+          type="text"
           id={sort}
           placeholder={`${sort} 정보를 입력해주세요.`}
           className={tm('py-1 px-1 w-4/5')}
