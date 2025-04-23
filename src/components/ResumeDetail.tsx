@@ -5,12 +5,19 @@ import Image from 'next/image'
 import React, { ChangeEvent, useRef, useState, useEffect } from 'react'
 
 function ResumeDetail() {
-  const [contentLength, setContentLength] = useState(0)
-  const [detailList, setDetailList] = useState<{ id: number }[]>([])
+  const [detailList, setDetailList] = useState<
+    { id: number; contentLength: number }[]
+  >([])
   const detailAddButton = useRef<HTMLButtonElement>(null)
 
   const handleCheckContentLength = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setContentLength(e.target.value.length)
+    const nextDetailList = detailList.map((item) => {
+      return item.id === Number(e.target.id.split(' ')[0])
+        ? { ...item, contentLength: e.target.value.length }
+        : item
+    })
+
+    setDetailList(nextDetailList)
   }
 
   const handleAddDetail = () => {
@@ -20,13 +27,13 @@ function ResumeDetail() {
       return
     }
 
-    const nextDetailList = [...detailList, { id: Date.now() }]
+    const nextDetailList = [...detailList, { id: Date.now(), contentLength: 0 }]
 
     setDetailList(nextDetailList)
   }
 
   useEffect(() => {
-    setDetailList([{ id: Date.now() }])
+    setDetailList([{ id: Date.now(), contentLength: 0 }])
   }, [])
 
   return (
@@ -66,7 +73,7 @@ function ResumeDetail() {
               'text-light-primary font-bold text-sm'
             )}
           >
-            {contentLength}/2000
+            {item.contentLength}/2000
           </p>
         </div>
       ))}
