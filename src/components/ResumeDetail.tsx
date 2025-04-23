@@ -1,6 +1,7 @@
 'use client'
 
 import { tm } from '@/utils/tw-merge'
+import Image from 'next/image'
 import React, { ChangeEvent, useRef, useState, useEffect } from 'react'
 
 function ResumeDetail() {
@@ -15,6 +16,7 @@ function ResumeDetail() {
   const handleAddDetail = () => {
     if (detailList.length > 4) {
       detailAddButton.current!.disabled = true
+      detailAddButton.current!.hidden = true
       return
     }
 
@@ -28,9 +30,12 @@ function ResumeDetail() {
   }, [])
 
   return (
-    <div className={tm('flex flex-col w-3/5 mx-auto gap-4 relative')}>
+    <div className="flex flex-col gap-8 mb-20">
       {detailList.map((item, idx) => (
-        <React.Fragment key={item.id}>
+        <div
+          className={tm('flex flex-col w-3/5 mx-auto gap-4 relative')}
+          key={item.id}
+        >
           <div className={tm('flex w-4/5 ml-0 items-center gap-1')}>
             <p className="text-primary font-bold">{idx + 1}.</p>
             <label htmlFor={`${item.id} input`} className="sr-only">
@@ -57,16 +62,22 @@ function ResumeDetail() {
           />
           <p
             className={tm(
-              'absolute top-1 right-3',
+              'absolute top-16 right-3',
               'text-light-primary font-bold text-sm'
             )}
           >
             {contentLength}/2000
           </p>
-        </React.Fragment>
+        </div>
       ))}
-      <button type="button" onClick={handleAddDetail} ref={detailAddButton}>
-        추가하기
+      <button
+        type="button"
+        onClick={handleAddDetail}
+        ref={detailAddButton}
+        aria-label="문항 추가"
+        className={tm('bg-primary', 'flex justify-center w-1/3 mx-auto mt-16')}
+      >
+        <Image src="/icons/add-detail.svg" alt="" width={48} height={48} />
       </button>
     </div>
   )
