@@ -21,15 +21,15 @@ function ResumeDetail() {
   }
 
   const handleAddDetail = () => {
-    if (detailList.length > 4) {
+    const nextDetailList = [...detailList, { id: Date.now(), contentLength: 0 }]
+
+    setDetailList(nextDetailList)
+
+    if (detailList.length > 3) {
       detailAddButton.current!.disabled = true
       detailAddButton.current!.hidden = true
       return
     }
-
-    const nextDetailList = [...detailList, { id: Date.now(), contentLength: 0 }]
-
-    setDetailList(nextDetailList)
   }
 
   useEffect(() => {
