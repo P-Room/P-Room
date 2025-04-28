@@ -1,4 +1,7 @@
+'use client'
+
 import { tm } from '@/utils/tw-merge'
+import { useRouter } from 'next/navigation'
 
 interface ResumeListItemProps {
   title: string
@@ -12,6 +15,12 @@ function ResumeListItem({
   hashtag,
   id,
 }: ResumeListItemProps & React.ComponentProps<'div'>) {
+  const router = useRouter()
+
+  const handleMoveDetail = () => {
+    router.push(`/detail/${id}`)
+  }
+
   return (
     <div
       className={tm(
@@ -20,7 +29,11 @@ function ResumeListItem({
         'mx-auto p-6'
       )}
     >
-      <button type="button" className="text-left text-2xl cursor-pointer">
+      <button
+        type="button"
+        className="text-left text-2xl cursor-pointer"
+        onClick={handleMoveDetail}
+      >
         {title}
       </button>
       <p className="font-bold">{`${duedate[0]} ~ ${duedate[1]}`}</p>
