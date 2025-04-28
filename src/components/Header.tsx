@@ -4,9 +4,11 @@ import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import useHeaderDropdownStore from './../store/HeaderDropdownStore'
+import useSearchStore from '@/store/SearchStore'
 
 function Header() {
   const { isOpen, setIsOpen } = useHeaderDropdownStore()
+  const { searchKeyword, setSearchKeyword } = useSearchStore()
 
   const router = useRouter()
 
@@ -16,6 +18,7 @@ function Header() {
       alert('검색어를 입력해주세요')
       return
     }
+    setSearchKeyword(query)
     router.push(`/search/${query}`)
   }
 
@@ -49,6 +52,7 @@ function Header() {
             type="text"
             placeholder="검색어를 입력해주세요"
             className={tm('h-12 w-100 focus:outline-none')}
+            defaultValue={searchKeyword}
           />
           <button type="submit" className="cursor-pointer">
             <Image
