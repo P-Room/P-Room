@@ -6,6 +6,7 @@
   --color-secondary: #5c5d70;
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-hashbg: rgb(242, 242, 242, 0.2);
 }
 
 @layer utilities {
