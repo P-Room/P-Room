@@ -6,11 +6,14 @@ import React, { ChangeEvent, useRef, useState, useEffect } from 'react'
 import HashTag from './HashTag'
 
 function ResumeDetail() {
+  // 문항의 길이와 id를 저장하는 상태
   const [detailList, setDetailList] = useState<
     { id: number; contentLength: number }[]
   >([])
+  // 문항 추가 버튼
   const detailAddButton = useRef<HTMLButtonElement>(null)
 
+  // 길이를 실시간으로 체크하는 함수(각각의 상태를 구분해야함)
   const handleCheckContentLength = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const nextDetailList = detailList.map((item) => {
       return item.id === Number(e.target.id.split(' ')[0])
@@ -21,6 +24,7 @@ function ResumeDetail() {
     setDetailList(nextDetailList)
   }
 
+  // 추가버튼을 클릭 시 발생할 이벤트(항목이 5개가 되었다면 버튼 삭제)
   const handleAddDetail = () => {
     const nextDetailList = [...detailList, { id: Date.now(), contentLength: 0 }]
 
@@ -33,6 +37,7 @@ function ResumeDetail() {
     }
   }
 
+  // 초기 값은 항상 첫번째 문항을 나타내도록 설정
   useEffect(() => {
     setDetailList([{ id: Date.now(), contentLength: 0 }])
   }, [])
@@ -60,7 +65,7 @@ function ResumeDetail() {
               )}
             />
           </div>
-          <HashTag />
+          <HashTag id={item.id + ''} />
           <label htmlFor={`${item.id} textarea`} className="sr-only">
             내용을 입력해주세요
           </label>
