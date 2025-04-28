@@ -2,6 +2,7 @@
 
 import { tm } from '@/utils/tw-merge'
 
+// 배경색상과 너비를 결정하는 요소를 props로 전달
 interface ButtonProps {
   fill?: boolean
   wid?: number | string
