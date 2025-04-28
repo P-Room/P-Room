@@ -16,7 +16,7 @@ import java.util.Date;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long personId;
 
     @Column(unique = true, nullable = false)
     private String email;
