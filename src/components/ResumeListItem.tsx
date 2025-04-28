@@ -17,6 +17,7 @@ function ResumeListItem({
 }: ResumeListItemProps & React.ComponentProps<'div'>) {
   const router = useRouter()
 
+  // 라우팅 이벤트
   const handleMoveDetail = () => {
     router.push(`/detail/${id}`)
   }
@@ -29,6 +30,7 @@ function ResumeListItem({
         'mx-auto p-6'
       )}
     >
+      {/* 현재 제목만 클릭해야만 링크를 이동할 수 있는 형태 */}
       <button
         type="button"
         className="text-left text-2xl cursor-pointer"
