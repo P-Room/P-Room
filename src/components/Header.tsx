@@ -65,8 +65,20 @@ function Header() {
         >
           새 글 쓰기
         </button>
-        <button className={tm('cursor-pointer', 'h-12', 'hover:font-bold')}>
+        <button
+          className={tm(
+            'cursor-pointer h-12',
+            'flex flex-row gap-2 items-center',
+            'hover:font-bold'
+          )}
+        >
           닉네임
+          <Image
+            src="/icons/nickname-dropdown.svg"
+            alt="회원 정보"
+            width={24}
+            height={24}
+          />
         </button>
       </div>
     </div>
