@@ -1,13 +1,18 @@
 'use client'
 
 import { tm } from '@/utils/tw-merge'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 function Header() {
   const router = useRouter()
 
   const handleSearch = (formData: FormData) => {
-    const query = formData.get('search')
+    const query = formData.get('search') + ''
+    if (query?.length < 1) {
+      alert('검색어를 입력해주세요')
+      return
+    }
     router.push(`/search/${query}`)
   }
 
@@ -27,16 +32,26 @@ function Header() {
     >
       <form action={handleSearch} className="flex flex-row gap-4">
         <p className="bg-gray-400 w-40 h-12">로고</p>
-        <label htmlFor="searchbar" className="sr-only">
-          검색어를 입력해주세요
-        </label>
-        <input
-          name="search"
-          id="searchbar"
-          type="text"
-          placeholder="검색어를 입력해주세요"
-          className={tm('border border-primary rounded-2xl', 'w-100 px-2')}
-        />
+        <div className="relative flex justify-center border border-primary rounded-2xl px-2">
+          <label htmlFor="searchbar" className="sr-only">
+            검색어를 입력해주세요
+          </label>
+          <input
+            name="search"
+            id="searchbar"
+            type="text"
+            placeholder="검색어를 입력해주세요"
+            className={tm('h-12 w-100 focus:outline-none')}
+          />
+          <button type="submit" className="cursor-pointer">
+            <Image
+              src="/icons/search.svg"
+              alt="검색하기"
+              width={32}
+              height={32}
+            />
+          </button>
+        </div>
       </form>
       <div className="flex flex-row gap-4 items-center">
         <button
