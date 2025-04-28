@@ -1,5 +1,6 @@
 'use client'
 
+import { tm } from '@/utils/tw-merge'
 import { useState, KeyboardEvent, ChangeEvent } from 'react'
 
 function HashTag() {
@@ -9,7 +10,7 @@ function HashTag() {
   const handleInputTag = (text: string) => {
     const trimmed = text.trim()
 
-    if (trimmed.length > 0 && !tags.includes(trimmed)) {
+    if (trimmed.length > 0 && !tags.includes(`#${trimmed}`)) {
       setTags([...tags, trimmed.startsWith('#') ? trimmed : `#${trimmed}`])
     }
   }
@@ -31,28 +32,34 @@ function HashTag() {
   }
 
   return (
-    <div className="w-full p-2 border rounded-md">
-      <div className="flex flex-wrap gap-2 mb-2">
+    <div className="w-full p-2">
+      <div
+        className={`${tags.length > 0 ? '' : 'sr-only'} flex flex-wrap gap-2 mb-2`}
+      >
         {tags.map((tag, index) => (
           <div
             key={index}
-            className="flex items-center bg-gray-200 text-gray-800 rounded-full px-3 py-1 text-sm"
+            className="flex items-center bg-secondary font-bold text-white rounded-full px-3 py-1"
           >
             {tag}
             <button
               type="button"
-              className="ml-2 text-gray-500 cursor-pointer"
+              className="ml-2 text-white cursor-pointer"
               onClick={() => removeTag(index)}
+              aria-label="삭제"
             >
-              ×
+              🇽
             </button>
           </div>
         ))}
       </div>
       <input
         type="text"
-        className="w-full outline-none"
-        placeholder="해시태그를 입력 후 엔터 또는 쉼표를 눌러주세요"
+        className={tm(
+          'w-full p-1 outlie-none rounded-lg',
+          'focus:outline-2 focus:outline-primary'
+        )}
+        placeholder="해쉬태그를 입력해주세요."
         value={inputValue}
         onChange={handleInputText}
         onKeyDown={handleInsertHashTag}

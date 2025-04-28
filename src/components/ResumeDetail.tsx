@@ -3,6 +3,7 @@
 import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
 import React, { ChangeEvent, useRef, useState, useEffect } from 'react'
+import HashTag from './HashTag'
 
 function ResumeDetail() {
   const [detailList, setDetailList] = useState<
@@ -43,7 +44,7 @@ function ResumeDetail() {
           className={tm('flex flex-col w-3/5 mx-auto gap-4 relative')}
           key={item.id}
         >
-          <div className={tm('flex w-4/5 ml-0 items-center gap-1')}>
+          <div className={tm('flex w-full ml-0 items-center gap-1')}>
             <p className="text-primary font-bold">{idx + 1}.</p>
             <label htmlFor={`${item.id} input`} className="sr-only">
               제목을 입력해주세요
@@ -52,10 +53,14 @@ function ResumeDetail() {
               id={`${item.id} input`}
               type="text"
               placeholder="제목을 입력해주세요"
-              className={tm('py-1 px-1 w-full', 'text-primary font-bold')}
+              className={tm(
+                'py-1 px-1 w-full',
+                'text-primary font-bold rounded-lg',
+                'focus:outline-primary'
+              )}
             />
           </div>
-          <p className={tm('text-secondary font-bold')}>#해시태그</p>
+          <HashTag />
           <label htmlFor={`${item.id} textarea`} className="sr-only">
             내용을 입력해주세요
           </label>
@@ -65,11 +70,15 @@ function ResumeDetail() {
             rows={10}
             placeholder="내용을 입력해주세요"
             onChange={(data) => handleCheckContentLength(data)}
-            className={tm('border-2 rounded-2xl border-primary', 'p-4')}
+            className={tm(
+              'border-2 rounded-2xl border-primary',
+              'p-4',
+              'focus:outline-secondary'
+            )}
           />
           <p
             className={tm(
-              'absolute top-16 right-3',
+              'absolute bottom-2 right-3',
               'text-light-primary font-bold text-sm'
             )}
           >
