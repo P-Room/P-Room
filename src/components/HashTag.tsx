@@ -32,7 +32,7 @@ function HashTag() {
   }
 
   return (
-    <div className="w-full p-2">
+    <div className="w-full">
       <div
         className={`${tags.length > 0 ? '' : 'sr-only'} flex flex-wrap gap-2 mb-2`}
       >

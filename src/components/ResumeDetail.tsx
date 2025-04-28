@@ -41,7 +41,7 @@ function ResumeDetail() {
     <div className="flex flex-col gap-8 mb-20">
       {detailList.map((item, idx) => (
         <div
-          className={tm('flex flex-col w-3/5 mx-auto gap-4 relative')}
+          className={tm('flex flex-col w-3/5 mx-auto gap-3 relative')}
           key={item.id}
         >
           <div className={tm('flex w-full ml-0 items-center gap-1')}>
@@ -54,7 +54,7 @@ function ResumeDetail() {
               type="text"
               placeholder="제목을 입력해주세요"
               className={tm(
-                'py-1 px-1 w-full',
+                'p-1 w-full',
                 'text-primary font-bold rounded-lg',
                 'focus:outline-primary'
               )}
@@ -94,7 +94,8 @@ function ResumeDetail() {
         className={tm(
           'bg-primary',
           'flex justify-center w-1/5 mx-auto mt-16',
-          'py-2 rounded-2xl'
+          'py-2 rounded-2xl',
+          'cursor-pointer'
         )}
       >
         <Image src="/icons/add-detail.svg" alt="" width={48} height={48} />
