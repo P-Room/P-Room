@@ -3,8 +3,11 @@
 import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import useHeaderDropdownStore from './../store/HeaderDropdownStore'
 
 function Header() {
+  const { isOpen, setIsOpen } = useHeaderDropdownStore()
+
   const router = useRouter()
 
   const handleSearch = (formData: FormData) => {
@@ -18,6 +21,10 @@ function Header() {
 
   const handleMoveWrite = () => {
     router.push('/write-resume')
+  }
+
+  const handleShowDropdown = () => {
+    setIsOpen()
   }
 
   return (
@@ -71,6 +78,7 @@ function Header() {
             'flex flex-row gap-2 items-center',
             'hover:font-bold'
           )}
+          onClick={handleShowDropdown}
         >
           닉네임
           <Image
@@ -80,6 +88,7 @@ function Header() {
             height={24}
           />
         </button>
+        {isOpen ? <div>ㅎ</div> : null}
       </div>
     </div>
   )
