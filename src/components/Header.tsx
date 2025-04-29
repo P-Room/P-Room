@@ -73,7 +73,7 @@ function Header() {
         </div>
       </form>
       <div className="flex flex-row gap-4 items-center">
-        <Button fill={true} wid={28} onClick={handleMoveWrite}>
+        <Button fill={false} wid={28} onClick={handleMoveWrite}>
           새 글 쓰기
         </Button>
         <button
