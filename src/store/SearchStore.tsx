@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
 
 interface SearchStoreStates {
   searchKeyword: string
@@ -11,20 +10,13 @@ interface SearchStoreActions {
 
 type SearchStoreProps = SearchStoreStates & SearchStoreActions
 
-const useSearchStore = create(
-  persist<SearchStoreProps>(
-    (set) => ({
-      searchKeyword: '',
+const useSearchStore = create<SearchStoreProps>((set) => ({
+  searchKeyword: '',
 
-      setSearchKeyword: (input: string) =>
-        set(() => ({
-          searchKeyword: input,
-        })),
-    }),
-    {
-      name: '검색어 저장소',
-    }
-  )
-)
+  setSearchKeyword: (input: string) =>
+    set(() => ({
+      searchKeyword: input,
+    })),
+}))
 
 export default useSearchStore

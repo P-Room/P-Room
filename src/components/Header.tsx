@@ -2,15 +2,17 @@
 
 import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import useHeaderDropdownStore from './../store/HeaderDropdownStore'
 import useSearchStore from '@/store/SearchStore'
+import { useEffect } from 'react'
 
 function Header() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
   const { isOpen, setIsOpen } = useHeaderDropdownStore()
   const { searchKeyword, setSearchKeyword } = useSearchStore()
-
-  const router = useRouter()
 
   const handleSearch = (formData: FormData) => {
     const query = formData.get('search') + ''
@@ -19,7 +21,7 @@ function Header() {
       return
     }
     setSearchKeyword(query)
-    router.push(`/search/${query}`)
+    router.push(`/keyword?search=${query}`)
   }
 
   const handleMoveWrite = () => {
@@ -29,6 +31,11 @@ function Header() {
   const handleShowDropdown = () => {
     setIsOpen()
   }
+
+  useEffect(() => {
+    const search = searchParams.get('search')
+    setSearchKeyword(search ?? '')
+  }, [searchParams, setSearchKeyword])
 
   return (
     <div
