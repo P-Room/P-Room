@@ -20,7 +20,8 @@ function Button({
         <button
           className={tm(
             'flex justify-center items-center border text-white bg-primary border-primary py-2 px-4 rounded-2xl text-center cursor-pointer',
-            `w-${wid}`
+            `w-${wid}`,
+            'hover:scale-110 transition duration-75'
           )}
           onClick={onClick}
         >
@@ -30,7 +31,8 @@ function Button({
         <button
           className={tm(
             'flex justify-center items-center border border-primary py-2 px-4 rounded-2xl text-center cursor-pointer',
-            `w-${wid}`
+            `w-${wid}`,
+            'hover:bg-primary hover:text-white'
           )}
           onClick={onClick}
         >

@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import useHeaderDropdownStore from './../store/HeaderDropdownStore'
 import useSearchStore from '@/store/SearchStore'
 import { useEffect } from 'react'
+import Button from './Button'
 
 function Header() {
   const router = useRouter()
@@ -72,17 +73,9 @@ function Header() {
         </div>
       </form>
       <div className="flex flex-row gap-4 items-center">
-        <button
-          type="button"
-          className={tm(
-            'border border-primary rounded-2xl',
-            'w-28 h-12 cursor-pointer',
-            'hover:bg-primary hover:text-white'
-          )}
-          onClick={handleMoveWrite}
-        >
+        <Button fill={true} wid={28} onClick={handleMoveWrite}>
           새 글 쓰기
-        </button>
+        </Button>
         <button
           className={tm(
             'cursor-pointer h-12',
