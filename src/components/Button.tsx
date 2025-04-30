@@ -13,6 +13,7 @@ function Button({
   fill = true,
   wid = 'fit',
   onClick,
+  ...restProps
 }: React.ComponentProps<'button'> & ButtonProps) {
   return (
     <>
@@ -24,6 +25,7 @@ function Button({
             'hover:scale-110 transition duration-75'
           )}
           onClick={onClick}
+          {...restProps}
         >
           {children}
         </button>
@@ -35,6 +37,7 @@ function Button({
             'hover:bg-primary hover:text-white'
           )}
           onClick={onClick}
+          {...restProps}
         >
           {children}
         </button>
