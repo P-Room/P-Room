@@ -16,6 +16,7 @@ function Header() {
           'mb-4'
         )}
       >
+        {/* 로그인 상태에서 나타낼 헤더 */}
         <LoggedInHeader />
       </div>
       <div
@@ -27,6 +28,7 @@ function Header() {
           'mb-4'
         )}
       >
+        {/* 비로그인 상태에서 나타낼 헤더 */}
         <LoggedOutHeader />
       </div>
     </>

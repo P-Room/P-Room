@@ -4,6 +4,7 @@ import Button from './Button'
 function LoggedOutHeader() {
   const router = useRouter()
 
+  // 로그인 페이지로 이동
   const handleMoveToLogin = () => {
     router.push('/login')
   }

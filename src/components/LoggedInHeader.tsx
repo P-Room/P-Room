@@ -10,9 +10,11 @@ function LoggedInHeader() {
   const router = useRouter()
   const searchParams = useSearchParams()
 
+  // 모달의 오픈 여부 및 검색 키워드 할당하기 위한 상태 저장소
   const { isOpen, setIsOpen } = useHeaderDropdownStore()
   const { searchKeyword, setSearchKeyword } = useSearchStore()
 
+  // 검색 이벤트
   const handleSearch = (formData: FormData) => {
     const query = formData.get('search') + ''
     if (query?.length < 1) {
@@ -23,14 +25,17 @@ function LoggedInHeader() {
     router.push(`/keyword?search=${query}`)
   }
 
+  // 글쓰기 페이지로 이동시키는 이벤트
   const handleMoveWrite = () => {
     router.push('/write-resume')
   }
 
+  // 드랍다운을 나타낼 이벤트
   const handleShowDropdown = () => {
     setIsOpen()
   }
 
+  // 초기에 검색바에 사용자가 설정한 검색 키워드를 나타내는 사이드 이펙트
   useEffect(() => {
     const search = searchParams.get('search')
     setSearchKeyword(search ?? '')
