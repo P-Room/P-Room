@@ -1,8 +1,7 @@
 'use client'
 
 import 'react-calendar/dist/Calendar.css'
-import { Calendar as Cal, CalendarProps } from 'react-calendar'
-import { useState } from 'react'
+import { Calendar as Cal } from 'react-calendar'
 import { format } from 'date-fns'
 
 const schedule: Record<string, string[]> = {
@@ -10,17 +9,7 @@ const schedule: Record<string, string[]> = {
   '2025-05-07': ['공고 제목3'],
 }
 
-type Value = Date | null
-
 function Calendar() {
-  const [date, setDate] = useState<Value>(new Date())
-
-  const handleChange: CalendarProps['onChange'] = (value) => {
-    if (value instanceof Date) {
-      setDate(value)
-    }
-  }
-
   const tileContent = ({ date, view }: { date: Date; view: string }) => {
     if (view !== 'month') return null // 월간 뷰에서만 렌더링
 
@@ -46,17 +35,15 @@ function Calendar() {
   }
 
   return (
-    <div className="p-4">
+    <>
       <Cal
-        onChange={handleChange}
-        value={date}
         tileContent={tileContent}
         calendarType="gregory"
         locale="ko-KR"
-        formatDay={(locale, date) => date.getDate().toString()} // 날짜만 표시
+        formatDay={(_, date) => date.getDate().toString()} // 날짜만 표시
         showNeighboringMonth={true}
       />
-    </div>
+    </>
   )
 }
 
