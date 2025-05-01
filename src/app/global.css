@@ -88,18 +88,21 @@
   }
 
   .react-calendar__tile--now {
-    background: theme(--color-light-primary) !important;
-    color: theme(--color-white);
+    background: theme(--color-white) !important;
+    color: theme(--color-black) !important;
+    border-bottom: 2px solid theme(--color-gray-400) !important;
   }
 
   .react-calendar__tile--active {
-    background: theme(--color-primary) !important;
+    background: theme(--color-white) !important;
+    color: theme(--color-black) !important;
+    border-bottom: 2px solid theme(--color-light-primary) !important;
   }
 
   .react-calendar__tile {
     display: flex;
     flex-flow: column;
-    height: 9rem;
+    min-height: 9rem;
 
     abbr {
       text-align: start;
@@ -107,8 +110,10 @@
     }
 
     &:hover {
-      background: theme(--color-light-primary) !important;
-      color: theme(--color-white) !important;
+      background: theme(--color-white) !important;
+      color: theme(--color-black) !important;
+      border-bottom: 2px solid theme(--color-light-primary) !important;
+      cursor: default !important;
     }
   }
 
