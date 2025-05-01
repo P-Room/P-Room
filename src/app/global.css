@@ -111,7 +111,6 @@
 
     &:hover {
       background: theme(--color-white) !important;
-      color: theme(--color-black) !important;
       border-bottom: 2px solid theme(--color-light-primary) !important;
       cursor: default !important;
     }
