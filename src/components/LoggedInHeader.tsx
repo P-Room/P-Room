@@ -22,7 +22,7 @@ function LoggedInHeader() {
       return
     }
     setSearchKeyword(query)
-    router.push(`/keyword?search=${query}`)
+    router.push(`/search?query=${query}`)
   }
 
   // 글쓰기 페이지로 이동시키는 이벤트
@@ -37,7 +37,7 @@ function LoggedInHeader() {
 
   // 초기에 검색바에 사용자가 설정한 검색 키워드를 나타내는 사이드 이펙트
   useEffect(() => {
-    const search = searchParams.get('search')
+    const search = searchParams.get('query')
     setSearchKeyword(search ?? '')
   }, [searchParams, setSearchKeyword])
 
