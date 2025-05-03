@@ -1,4 +1,5 @@
 import ResumeListItem from '@/components/ResumeListItem'
+import WriteButton from '@/components/WriteButton'
 import { tm } from '@/utils/tw-merge'
 
 function ResumeList() {
@@ -29,6 +30,7 @@ function ResumeList() {
           hashtag={['행복', '소망', '사랑']}
         />
       </div>
+      <WriteButton />
     </>
   )
 }
