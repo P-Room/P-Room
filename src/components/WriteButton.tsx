@@ -13,7 +13,7 @@ function WriteButton() {
         className={tm(
           'rounded-full bg-primary',
           'p-4',
-          'absolute right-12 bottom-12',
+          'fixed right-12 bottom-12',
           'cursor-pointer'
         )}
         onClick={() => router.push('/write-resume')}
