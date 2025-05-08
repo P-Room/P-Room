@@ -19,7 +19,7 @@ public class RecruitmentQuestionController {
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        Object principal = authentication.getPrincipal();
 //        if (principal instanceof Person) {
-//            Long personId = ((Person) principal).getId();
+//            Long personId = ((Person) principal).getPersonId();
 //            return recruitmentQuestionService.save(recruitmentRequestDTO, personId);
 //        }
 //        throw new Exception("not authenticated");
@@ -32,7 +32,7 @@ public class RecruitmentQuestionController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = authentication.getPrincipal();
         if (principal instanceof Person) {
-            Long personId = ((Person) principal).getId();
+            Long personId = ((Person) principal).getPersonId();
             return recruitmentQuestionService.getRecruitment(recruitmentId, personId);
         }
         throw new Exception("not authenticated");
@@ -43,7 +43,7 @@ public class RecruitmentQuestionController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = authentication.getPrincipal();
         if (principal instanceof Person) {
-            Long personId = ((Person) principal).getId();
+            Long personId = ((Person) principal).getPersonId();
             return recruitmentQuestionService.update(recruitmentRequestDTO, personId);
         }
         throw new Exception("not authenticated");
