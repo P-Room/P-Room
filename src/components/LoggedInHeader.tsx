@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import Button from './Button'
+import HeaderModal from './HeaderModal'
 
 function LoggedInHeader() {
   const router = useRouter()
@@ -91,6 +92,7 @@ function LoggedInHeader() {
           />
         </button>
         {isOpen ? <div>ㅎ</div> : null}
+        <HeaderModal />
       </div>
     </>
   )
