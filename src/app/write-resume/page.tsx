@@ -5,7 +5,12 @@ import { tm } from '@/utils/tw-merge'
 function WriteResume() {
   return (
     <>
-      <h1 className={tm('text-center text-3xl font-bold', 'mt-8 mb-12')}>
+      <h1
+        className={tm(
+          'text-center md:text-3xl text-2xl font-bold',
+          'mt-8 mb-12'
+        )}
+      >
         새 글 작성
       </h1>
       <div className={tm('flex flex-col gap-8 mb-16')}>

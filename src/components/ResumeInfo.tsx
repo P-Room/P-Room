@@ -33,12 +33,15 @@ function ResumeInfo({ sort }: ResumeInfoProps) {
   return (
     <div
       className={tm(
-        'flex gap-5 items-center w-3/5 m-auto py-3 px-5',
+        'flex gap-5 items-center md:w-3/5 w-4/5 m-auto py-3 px-5',
         'border-primary border-b'
       )}
     >
       <Image src={`/icons/${src}`} alt={sort} width={24} height={24} />
-      <label htmlFor={sort} className={tm('font-bold', 'w-25')}>
+      <label
+        htmlFor={sort}
+        className={tm('font-bold', 'w-25 whitespace-nowrap')}
+      >
         {sort}
       </label>
       {sort === '기간' ? (
