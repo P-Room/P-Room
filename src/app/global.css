@@ -59,10 +59,12 @@
   }
 
   .react-calendar__navigation {
-    display: flex;
     justify-content: center;
-    gap: 1rem;
-    font-size: theme(--text-2xl);
+    @media only screen and (min-width: 768px) {
+      display: flex;
+      gap: 1rem;
+      font-size: theme(--text-2xl);
+    }
   }
 
   .react-calendar__navigation__label {
