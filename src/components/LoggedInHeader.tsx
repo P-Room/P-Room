@@ -91,8 +91,7 @@ function LoggedInHeader() {
             height={24}
           />
         </button>
-        {isOpen ? <div>ㅎ</div> : null}
-        <HeaderModal />
+        {isOpen ? <HeaderModal /> : null}
       </div>
     </>
   )
