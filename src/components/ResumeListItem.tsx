@@ -33,19 +33,22 @@ function ResumeListItem({
       {/* 현재 제목만 클릭해야만 링크를 이동할 수 있는 형태 */}
       <button
         type="button"
-        className="text-left text-2xl cursor-pointer"
+        className={tm(
+          'text-left md:text-2xl text-xl cursor-pointer',
+          'w-4/5 truncate'
+        )}
         onClick={handleMoveDetail}
       >
         {title}
       </button>
-      <p className="font-bold">{`${duedate[0]} ~ ${duedate[1]}`}</p>
+      <p className="font-bold md:text-base text-sm">{`${duedate[0]} ~ ${duedate[1]}`}</p>
       <div className="flex flex-row gap-2">
         {hashtag.map((item, index) => (
           <span
             className={tm(
               'bg-hashbg border-secondary border-1 rounded-full',
-              'px-3 py-1',
-              'text-secondary'
+              'md:px-3 md:py-1 px-1 py-0.5',
+              'text-secondary md:text-base text-xs'
             )}
             key={item + index}
           >
