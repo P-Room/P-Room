@@ -9,8 +9,8 @@ function Header() {
     <>
       <div
         className={tm(
-          'flex flex-row justify-between items-center',
-          'w-full h-16 py-2 pl-4 pr-8',
+          'flex flex-row justify-between items-center relative',
+          'md:w-full h-16 py-2 pl-4 md:pr-8 pr-4',
           'shadow-[0_2px_4px_rgba(0,0,0,0.25)]',
           // 추후 삭제
           'mb-4'
@@ -22,7 +22,7 @@ function Header() {
       <div
         className={tm(
           'flex flex-row justify-between items-center',
-          'w-full h-16 py-2 pl-4 pr-8',
+          'w-full h-16 py-2 pl-4 md:pr-8 pr-4',
           'shadow-[0_2px_4px_rgba(0,0,0,0.25)]',
           // 추후 삭제
           'mb-4'

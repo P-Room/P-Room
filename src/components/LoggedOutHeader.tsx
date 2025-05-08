@@ -11,8 +11,8 @@ function LoggedOutHeader() {
 
   return (
     <>
-      <p className="bg-gray-400 w-40 h-12">로고</p>
-      <Button fill={true} wid={28} onClick={handleMoveToLogin}>
+      <p className="bg-gray-400 md:w-40 w-20 h-4/5">로고</p>
+      <Button fill={true} onClick={handleMoveToLogin}>
         로그인
       </Button>
     </>
