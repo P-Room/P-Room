@@ -60,10 +60,39 @@ function Calendar() {
       />
       {Object.keys(schedule).map((item, idx) => {
         return (
-          <div key={idx}>
-            <h2>{item}</h2>
+          <div
+            key={idx}
+            className={tm('md:hidden', 'w-4/5 mx-auto', 'flex flex-col gap-2')}
+          >
+            <span
+              className={tm(
+                'border-b border-primary py-1',
+                'font-bold text-xl text-secondary'
+              )}
+            >
+              {item}
+            </span>
             {schedule[item].map((list, index) => {
-              return <div key={index + '아이템'}>ㅎㅇ</div>
+              return (
+                <button
+                  type="button"
+                  key={index + '아이템'}
+                  className={tm(
+                    'py-1 flex flex-row items-center gap-1 p-1',
+                    'border rounded-xl',
+                    'text-base text-secondary truncate',
+                    'cursor-pointer'
+                  )}
+                >
+                  <Image
+                    src="icons/resume-title.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                  />
+                  {list}
+                </button>
+              )
             })}
           </div>
         )
