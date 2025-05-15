@@ -1,9 +1,7 @@
-import Calendar from '@/components/Calendar'
-
 export default function Page() {
   return (
     <main>
-      <Calendar />
+      <h1>ㅎㅇ</h1>
     </main>
-  )
+  );
 }
