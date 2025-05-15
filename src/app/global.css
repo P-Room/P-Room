@@ -2,6 +2,123 @@
 
 @theme {
   --color-primary: #a47864;
+  --color-light-primary: #9b877e;
+  --color-secondary: #5c5d70;
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-hashbg: rgb(242, 242, 242, 0.2);
+}
+
+@layer utilities {
+  .react-datepicker__day--today {
+    background-color: theme(--color-primary) !important;
+    color: white !important;
+    border-radius: 999px !important;
+  }
+
+  .react-datepicker__day--in-range {
+    background-color: theme(--color-primary) !important;
+    color: white !important;
+    border-radius: 999px !important;
+  }
+
+  .react-datepicker__day--in-selecting-range {
+    background-color: theme(--color-primary) !important;
+    color: white !important;
+
+    border-radius: 999px !important;
+  }
+
+  .react-datepicker__day--range-start,
+  .react-datepicker__day--range-end {
+    background-color: theme(--color-primary) !important;
+    color: white !important;
+    border-radius: 999px !important;
+  }
+
+  .react-datepicker__day--in-range:not(.react-datepicker__day--range-start):not(
+      .react-datepicker__day--range-end
+    ) {
+    background-color: theme(--color-primary) !important;
+    opacity: 50% !important;
+    color: white !important;
+    border-radius: 999px !important;
+  }
+
+  /* react-calendar */
+  .react-calendar {
+    border: 0 !important;
+    width: 60% !important;
+    margin-inline: auto !important;
+  }
+
+  .react-calendar__viewContainer {
+    border: 1px solid theme(--color-primary);
+    border-radius: 1rem;
+    padding-block: 1rem;
+  }
+
+  .react-calendar__navigation {
+    justify-content: center;
+    @media only screen and (min-width: 768px) {
+      display: flex;
+      gap: 1rem;
+      font-size: theme(--text-2xl);
+    }
+  }
+
+  .react-calendar__navigation__label {
+    flex-grow: 0 !important;
+    font-weight: theme(--font-weight-bold);
+  }
+
+  .react-calendar__month-view__weekdays {
+    abbr {
+      font-size: theme(--text-base);
+      font-weight: theme(--font-weight-semibold);
+      text-decoration: none;
+    }
+  }
+
+  .react-calendar__month-view__weekdays__weekday--weekend {
+    abbr {
+      font-size: theme(--text-base);
+      font-weight: theme(--font-weight-semibold);
+      text-decoration: none;
+      color: theme(--color-primary);
+    }
+  }
+
+  .react-calendar__tile--now {
+    background: theme(--color-white) !important;
+    color: theme(--color-black) !important;
+    border-bottom: 2px solid theme(--color-gray-400) !important;
+  }
+
+  .react-calendar__tile--active {
+    background: theme(--color-white) !important;
+    color: theme(--color-black) !important;
+    border-bottom: 2px solid theme(--color-light-primary) !important;
+  }
+
+  .react-calendar__tile {
+    display: flex;
+    flex-flow: column;
+    min-height: 9rem;
+
+    abbr {
+      text-align: start;
+      padding-inline-start: 0.5rem;
+    }
+
+    &:hover {
+      background: theme(--color-white) !important;
+      border-bottom: 2px solid theme(--color-light-primary) !important;
+      cursor: default !important;
+    }
+  }
+
+  .react-calendar__month-view__days__day--weekend {
+    color: theme(--color-primary) !important;
+  }
 }

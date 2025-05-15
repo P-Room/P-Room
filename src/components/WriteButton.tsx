@@ -16,7 +16,7 @@ function WriteButton() {
           'absolute right-12 bottom-12',
           'cursor-pointer'
         )}
-        onClick={() => router.push('/WriteResume')}
+        onClick={() => router.push('/write-resume')}
       >
         <Image
           src="/icons/write-button.svg"
