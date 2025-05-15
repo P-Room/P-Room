@@ -1,5 +1,6 @@
 import ResumeDetail from '@/components/ResumeDetail'
 import ResumeInfo from '@/components/ResumeInfo'
+import SaveBar from '@/components/SaveBar'
 import { tm } from '@/utils/tw-merge'
 
 function WriteResume() {
@@ -21,6 +22,7 @@ function WriteResume() {
         <ResumeInfo sort="기간" />
       </div>
       <ResumeDetail />
+      <SaveBar />
     </>
   )
 }
