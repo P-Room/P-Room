@@ -56,6 +56,7 @@ function Calendar() {
         locale="ko-KR"
         formatDay={(_, date) => date.getDate().toString()} // 날짜만 표시
         showNeighboringMonth={true}
+        className={tm('hidden', 'md:block')}
       />
     </>
   )
