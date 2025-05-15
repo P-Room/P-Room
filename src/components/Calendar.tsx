@@ -58,6 +58,16 @@ function Calendar() {
         showNeighboringMonth={true}
         className={tm('hidden', 'md:block')}
       />
+      {Object.keys(schedule).map((item, idx) => {
+        return (
+          <div key={idx}>
+            <h2>{item}</h2>
+            {schedule[item].map((list, index) => {
+              return <div key={index + '아이템'}>ㅎㅇ</div>
+            })}
+          </div>
+        )
+      })}
     </>
   )
 }
