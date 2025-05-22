@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.NoSuchElementException;
+import java.util.function.Supplier;
 
 @Service
 public class PersonService {
@@ -28,8 +29,8 @@ public class PersonService {
         return personRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
-    public Person findPersonByEmail(String email) throws Exception{
-        return personRepository.findByEmail(email).orElseThrow(NoSuchElementException::new);
+    public Person findPersonByEmail(String email) {
+        return personRepository.findByEmail(email).orElseGet(Person::new);
     }
 
     public Person deletePersonById(Long id) throws Exception{
