@@ -3,10 +3,11 @@
 import { tm } from '@/utils/tw-merge'
 import LoggedInHeader from './LoggedInHeader'
 import LoggedOutHeader from './LoggedOutHeader'
+import { Suspense } from 'react'
 
 function Header() {
   return (
-    <>
+    <Suspense>
       <div
         className={tm(
           'flex flex-row justify-between items-center relative',
@@ -31,7 +32,7 @@ function Header() {
         {/* 비로그인 상태에서 나타낼 헤더 */}
         <LoggedOutHeader />
       </div>
-    </>
+    </Suspense>
   )
 }
 
