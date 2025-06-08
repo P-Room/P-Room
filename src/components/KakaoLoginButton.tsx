@@ -13,7 +13,7 @@ function KakaoLoginButton() {
     // 로그인 시 카카오로 연결해주는 역할을 담당(SPA적 움직임X)
     window.location.href = KAKAO_AUTH_URL
   }
-
+  // 테스트
   return (
     <>
       {/* 카카오 디자인 규정에 맞춰 작성한 코드  */}
