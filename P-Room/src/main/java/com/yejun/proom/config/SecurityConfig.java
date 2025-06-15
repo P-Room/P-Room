@@ -34,7 +34,7 @@ public class SecurityConfig {
         http.csrf((csrf) -> csrf.ignoringRequestMatchers("/**"))
             .cors(Customizer.withDefaults())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/index.html", "/index", "/auth/**", "/css/**", "/js/**", "/image/**").permitAll()
+                .requestMatchers("/index.html", "/oauth2/**").permitAll()
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2
