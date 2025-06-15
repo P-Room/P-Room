@@ -39,8 +39,8 @@ public class SecurityConfig {
             )
             .oauth2Login(oauth2 -> oauth2
                 .userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService))
-//                .successHandler(loginSuccessHandler)
-//                .failureHandler(loginFailureHandler)
+                .successHandler(loginSuccessHandler)
+                .failureHandler(loginFailureHandler)
             )
             .formLogin(AbstractHttpConfigurer::disable)  // 프론트엔드에서 직접 로그인 UI를 구성한다면 필요 없는 코드
         ;
