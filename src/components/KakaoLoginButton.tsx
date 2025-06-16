@@ -6,9 +6,9 @@ import Image from 'next/image'
 function KakaoLoginButton() {
   const handleLogin = () => {
     // 키 값과 URI는 이후 개발 과정에서 추가될 예정
-    const REST_API_KEY = 'd773ffb4016733284e32a07069ebf666'
-    const REDIRECT_URI = 'https://pr-oom.site/login/oauth2/code/kakao'
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`
+    // const REST_API_KEY = 'd773ffb4016733284e32a07069ebf666'
+    // const REDIRECT_URI = 'https://pr-oom.site/login/oauth2/code/kakao'
+    const KAKAO_AUTH_URL = `https://pr-oom.site/oauth2/authorization/kakao`
 
     // 로그인 시 카카오로 연결해주는 역할을 담당(SPA적 움직임X)
     window.location.href = KAKAO_AUTH_URL
