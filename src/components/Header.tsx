@@ -5,6 +5,7 @@ import LoggedInHeader from './LoggedInHeader'
 import LoggedOutHeader from './LoggedOutHeader'
 import { useEffect, useState } from 'react'
 import api from '@/lib/axios'
+import { Suspense } from 'react'
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>()
@@ -30,7 +31,7 @@ function Header() {
   }, [])
 
   return (
-    <>
+    <Suspense>
       {isLoggedIn ? (
         <div
           className={tm(
@@ -58,7 +59,8 @@ function Header() {
           <LoggedOutHeader />
         </div>
       )}
-    </>
+    </Suspense>
+
   )
 }
 

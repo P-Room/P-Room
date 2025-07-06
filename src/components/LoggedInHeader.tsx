@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import Button from './Button'
+import HeaderModal from './HeaderModal'
 
 function LoggedInHeader() {
   const router = useRouter()
@@ -43,9 +44,12 @@ function LoggedInHeader() {
 
   return (
     <>
-      <form action={handleSearch} className="flex flex-row gap-4">
-        <p className="bg-gray-400 w-40 h-12">로고</p>
-        <div className="relative flex justify-center border border-primary rounded-2xl px-2">
+      <form
+        action={handleSearch}
+        className="flex flex-row gap-4 h-full items-center"
+      >
+        <p className="bg-gray-400 md:w-40 w-20 h-4/5">로고</p>
+        <div className="relative md:flex md:justify-center border border-primary rounded-2xl px-2 hidden">
           <label htmlFor="searchbar" className="sr-only">
             검색어를 입력해주세요
           </label>
@@ -54,7 +58,7 @@ function LoggedInHeader() {
             id="searchbar"
             type="text"
             placeholder="검색어를 입력해주세요"
-            className={tm('h-12 w-100 focus:outline-none')}
+            className={tm('h-12 md:w-100 focus:outline-none')}
             defaultValue={searchKeyword}
           />
           <button type="submit" className="cursor-pointer">
@@ -87,7 +91,7 @@ function LoggedInHeader() {
             height={24}
           />
         </button>
-        {isOpen ? <div>ㅎ</div> : null}
+        {isOpen ? <HeaderModal /> : null}
       </div>
     </>
   )
