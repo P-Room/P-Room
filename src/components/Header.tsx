@@ -11,7 +11,7 @@ function Header() {
 
   const test = async () => {
     const data = await api
-      .get('/posts/1')
+      .get('/me')
       .then((res) => {
         setIsLoggedIn(true)
         return res.data
