@@ -73,6 +73,8 @@
   }
 
   .react-calendar__month-view__weekdays {
+    border-bottom: 1px solid black;
+    padding-block-end: 1rem;
     abbr {
       font-size: theme(--text-base);
       font-weight: theme(--font-weight-semibold);
@@ -92,19 +94,20 @@
   .react-calendar__tile--now {
     background: theme(--color-white) !important;
     color: theme(--color-black) !important;
-    border-bottom: 2px solid theme(--color-gray-400) !important;
+    box-shadow: 0px -2px 0px 0px theme(--color-gray-400) inset;
   }
 
   .react-calendar__tile--active {
     background: theme(--color-white) !important;
     color: theme(--color-black) !important;
-    border-bottom: 2px solid theme(--color-light-primary) !important;
+    box-shadow: 0px -2px 0px 0px theme(--color-light-primary) inset;
   }
 
   .react-calendar__tile {
     display: flex;
     flex-flow: column;
     min-height: 9rem;
+    box-sizing: border-box !important;
 
     abbr {
       text-align: start;
@@ -113,7 +116,7 @@
 
     &:hover {
       background: theme(--color-white) !important;
-      border-bottom: 2px solid theme(--color-light-primary) !important;
+      box-shadow: 0px -2px 0px 0px theme(--color-primary) inset;
       cursor: default !important;
     }
   }
