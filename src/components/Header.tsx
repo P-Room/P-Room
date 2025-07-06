@@ -1,17 +1,17 @@
 'use client'
 
-import axios from 'axios'
 import { tm } from '@/utils/tw-merge'
 import LoggedInHeader from './LoggedInHeader'
 import LoggedOutHeader from './LoggedOutHeader'
 import { useEffect, useState } from 'react'
+import api from '@/lib/axios'
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>()
 
   const test = async () => {
-    const data = await axios
-      .get('https://jsonplaceholder.typicode.com/posts/1')
+    const data = await api
+      .get('/posts/1')
       .then((res) => {
         setIsLoggedIn(true)
         return res.data
@@ -27,7 +27,7 @@ function Header() {
   useEffect(() => {
     test()
     console.log(isLoggedIn)
-  })
+  }, [])
 
   return (
     <>
