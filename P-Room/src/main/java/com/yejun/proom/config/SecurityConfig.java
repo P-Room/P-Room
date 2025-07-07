@@ -32,6 +32,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // 추후 인증 과정이 불필요해질 때 permitAll 수정할 예정
         http.csrf((csrf) -> csrf.ignoringRequestMatchers("/**"))
+            .cors(Customizer.withDefaults())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/index.html", "/oauth2/**").permitAll()
                 .anyRequest().authenticated()
