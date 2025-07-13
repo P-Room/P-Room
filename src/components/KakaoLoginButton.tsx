@@ -2,6 +2,7 @@
 
 import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function KakaoLoginButton() {
   const handleLogin = () => {
@@ -17,18 +18,17 @@ function KakaoLoginButton() {
   return (
     <>
       {/* 카카오 디자인 규정에 맞춰 작성한 코드  */}
-      <button
-        type="button"
+      <Link
         className={tm(
           'bg-[#FEE500] rounded-2xl text-black text-[24px] font-semibold',
           'flex items-center justify-center gap-4 mx-auto w-150 py-5',
           'cursor-pointer'
         )}
-        onClick={handleLogin}
+        href={'https://pr-oom.site/oauth2/authorization/kakao'}
       >
         <Image src="/icons/kakao-login.svg" alt="" width={36} height={36} />
         카카오 로그인
-      </button>
+      </Link>
     </>
   )
 }
