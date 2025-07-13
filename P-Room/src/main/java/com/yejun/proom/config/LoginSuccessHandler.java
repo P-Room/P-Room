@@ -22,7 +22,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
                                         HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
 //        String token = JWT 토큰같은거 넣을 때 필요하대;
-
+        System.out.println("onAuthenticationSuccess");
         String targetUrl = UriComponentsBuilder.fromUriString(frontendRedirectUri)
 //            .queryParam("token", token)
             .build().toUriString();

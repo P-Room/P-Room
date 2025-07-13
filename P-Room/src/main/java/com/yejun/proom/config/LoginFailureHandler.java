@@ -27,6 +27,7 @@ public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
                                         HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
         System.out.println(exception.getMessage());
+        System.out.println("onAuthenticationFailure");
         String errmsg;
 
         if(exception instanceof BadCredentialsException || exception instanceof InternalAuthenticationServiceException) {
