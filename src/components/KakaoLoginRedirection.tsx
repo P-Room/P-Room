@@ -15,7 +15,6 @@ export default function KakaoRedirect() {
         .get('/me')
         .then((res) => {
           console.log('로그인 성공', res.data)
-          router.push('/')
         })
         .catch((err) => console.error('로그인 실패', err))
     }
