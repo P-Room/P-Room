@@ -10,10 +10,11 @@ import { Suspense } from 'react'
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>()
 
-  const delay = (ms: number) => {
-    return new Promise(() => {
+  const delay = async (ms: number) => {
+    return new Promise((res) => {
       setTimeout(() => {
         console.log('대기 완')
+        res(undefined)
       }, ms)
     })
   }
