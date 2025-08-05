@@ -13,7 +13,6 @@ function Header() {
   const delay = async (ms: number) => {
     return new Promise((res) => {
       setTimeout(() => {
-        console.log('대기 완')
         res(undefined)
       }, ms)
     })
