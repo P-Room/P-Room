@@ -5,6 +5,8 @@ import { Calendar as Cal } from 'react-calendar'
 import { format } from 'date-fns'
 import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
+import { useEffect } from 'react'
+import api from '@/lib/axios'
 
 const schedule: Record<string, string[]> = {
   '2025-05-01': [
@@ -20,6 +22,14 @@ const schedule: Record<string, string[]> = {
 }
 
 function Calendar() {
+  useEffect(() => {
+    const data = api
+      .get('/api/recruit')
+      .then((res) => res.data)
+      .catch(() => null)
+    console.log(data)
+  }, [])
+
   const tileContent = ({ date, view }: { date: Date; view: string }) => {
     if (view !== 'month') return null // 월간 뷰에서만 렌더링
 
