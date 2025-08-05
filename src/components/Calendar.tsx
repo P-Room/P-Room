@@ -30,19 +30,19 @@ function Calendar() {
     })
   }
 
-  const testCalendar = async () => {
-    await delay(1100)
+  // const testCalendar = async () => {
+  //   await delay(1100)
 
-    const data = api
-      .get('/api/recruit')
-      .then((res) => res.data)
-      .catch(() => null)
-    console.log(data)
-  }
+  //   const data = api
+  //     .get('/api/recruit')
+  //     .then((res) => res.data)
+  //     .catch(() => null)
+  //   console.log(data)
+  // }
 
-  useEffect(() => {
-    testCalendar()
-  }, [])
+  // useEffect(() => {
+  //   testCalendar()
+  // }, [])
 
   const tileContent = ({ date, view }: { date: Date; view: string }) => {
     if (view !== 'month') return null // 월간 뷰에서만 렌더링
