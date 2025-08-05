@@ -42,7 +42,7 @@ function Calendar() {
         return null
       })
 
-    console.log((await calendarData) + '성공')
+    console.log(await calendarData)
   }
 
   useEffect(() => {
