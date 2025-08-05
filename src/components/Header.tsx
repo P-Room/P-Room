@@ -10,7 +10,18 @@ import { Suspense } from 'react'
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>()
 
+  const delay = async (ms: number) => {
+    return new Promise((res) => {
+      setTimeout(() => {
+        console.log('대기 완')
+        res(undefined)
+      }, ms)
+    })
+  }
+
   const test = async () => {
+    await delay(1000)
+
     const data = await api
       .get('/me')
       .then((res) => {
@@ -60,7 +71,6 @@ function Header() {
         </div>
       )}
     </Suspense>
-
   )
 }
 
