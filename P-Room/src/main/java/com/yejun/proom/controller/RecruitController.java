@@ -3,6 +3,7 @@ package com.yejun.proom.controller;
 import com.yejun.proom.entity.Person;
 import com.yejun.proom.entity.Recruitment;
 import com.yejun.proom.service.RecruitmentService;
+import com.yejun.proom.util.CustomOAuth2User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,8 +32,8 @@ public class RecruitController {
 
         Object principal = authentication.getPrincipal();
 
-        if (principal instanceof Person) {
-            Long personId = ((Person) principal).getPersonId();
+        if (principal instanceof CustomOAuth2User) {
+            Long personId = ((CustomOAuth2User) principal).getPerson().getPersonId();
             if (name == null && hashtag == null) {
                 Pageable p = PageRequest.of(page, size, Sort.by("deadline").descending());
                 return recruitmentService.findRecruitmentsByPersonId(p, personId);
@@ -55,8 +56,8 @@ public class RecruitController {
     public void deleteRecruitment(@PathVariable Long id, Authentication authentication) throws Exception {
         Object principal = authentication.getPrincipal();
 
-        if (principal instanceof Person) {
-            Long personId = ((Person) principal).getPersonId();
+        if (principal instanceof CustomOAuth2User) {
+            Long personId = ((CustomOAuth2User) principal).getPerson().getPersonId();
             recruitmentService.deleteRecruitment(id, personId);
         } else {
             throw new Exception("not authenticated");

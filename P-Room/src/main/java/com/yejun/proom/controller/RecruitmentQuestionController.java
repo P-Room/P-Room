@@ -4,6 +4,7 @@ import com.yejun.proom.dto.request.RecruitQuestionRequestDTO;
 import com.yejun.proom.entity.Person;
 import com.yejun.proom.entity.Recruitment;
 import com.yejun.proom.service.RecruitmentQuestionService;
+import com.yejun.proom.util.CustomOAuth2User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -21,8 +22,8 @@ public class RecruitmentQuestionController {
                                                  Authentication authentication) throws Exception {
         Object principal = authentication.getPrincipal();
 
-        if (principal instanceof Person) {
-            Long personId = ((Person) principal).getPersonId();
+        if (principal instanceof CustomOAuth2User) {
+            Long personId = ((CustomOAuth2User) principal).getPerson().getPersonId();
             return recruitmentQuestionService.save(recruitmentRequestDTO, personId);
         }   else{
             throw new Exception("not authenticated");
@@ -33,8 +34,8 @@ public class RecruitmentQuestionController {
     public Recruitment getRecruitment(@PathVariable("recruit_id") Long recruitmentId,
                                       Authentication authentication) throws Exception {
         Object principal = authentication.getPrincipal();
-        if (principal instanceof Person) {
-            Long personId = ((Person) principal).getPersonId();
+        if (principal instanceof CustomOAuth2User) {
+            Long personId = ((CustomOAuth2User) principal).getPerson().getPersonId();
             return recruitmentQuestionService.getRecruitment(recruitmentId, personId);
         } else {
             throw new Exception("not authenticated");
@@ -45,8 +46,8 @@ public class RecruitmentQuestionController {
     public Recruitment updateRecruitmentQuestion(@RequestBody RecruitQuestionRequestDTO recruitmentRequestDTO,
                                                  Authentication authentication) throws Exception {
         Object principal = authentication.getPrincipal();
-        if (principal instanceof Person) {
-            Long personId = ((Person) principal).getPersonId();
+        if (principal instanceof CustomOAuth2User) {
+            Long personId = ((CustomOAuth2User) principal).getPerson().getPersonId();
             return recruitmentQuestionService.update(recruitmentRequestDTO, personId);
         } else {
             throw new Exception("not authenticated");
