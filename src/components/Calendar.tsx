@@ -5,7 +5,7 @@ import { Calendar as Cal } from 'react-calendar'
 import { format } from 'date-fns'
 import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import api from '@/lib/axios'
 
 const schedule: Record<string, string[]> = {
@@ -22,6 +22,8 @@ const schedule: Record<string, string[]> = {
 }
 
 function Calendar() {
+  const [dateList, setDateList] = useState({})
+
   const delay = async (ms: number) => {
     return new Promise((res) => {
       setTimeout(() => {
@@ -42,7 +44,15 @@ function Calendar() {
         return null
       })
 
-    console.log((await calendarData).content)
+    for (const date of (await calendarData).content) {
+      const targetDate = date.startDate
+      const targetName = date.name
+
+      const newTargetName = [...dateList[date.startDate], targetName]
+      setDateList((prev) => ({ ...prev, [date.startDate]: [date.name] }))
+    }
+
+    console.log(dateList)
   }
 
   useEffect(() => {
