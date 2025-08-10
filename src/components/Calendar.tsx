@@ -42,7 +42,7 @@ function Calendar() {
         return null
       })
 
-    console.log(await calendarData)
+    console.log((await calendarData).content)
   }
 
   useEffect(() => {
