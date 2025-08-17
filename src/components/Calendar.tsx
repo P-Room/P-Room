@@ -22,7 +22,7 @@ const schedule: Record<string, string[]> = {
 }
 
 function Calendar() {
-  const [dateList, setDateList] = useState({})
+  const [dateList, setDateList] = useState<Record<string, string>>({})
 
   const delay = async (ms: number) => {
     return new Promise((res) => {
@@ -44,15 +44,7 @@ function Calendar() {
         return null
       })
 
-    for (const date of (await calendarData).content) {
-      const targetDate = date.startDate
-      const targetName = date.name
-
-      const newTargetName = [...dateList[date.startDate], targetName]
-      setDateList((prev) => ({ ...prev, [date.startDate]: [date.name] }))
-    }
-
-    console.log(dateList)
+    console.log(calendarData)
   }
 
   useEffect(() => {
