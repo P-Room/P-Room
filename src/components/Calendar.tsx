@@ -8,19 +8,6 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import api from '@/lib/axios'
 
-const schedule: Record<string, string[]> = {
-  '2025-05-01': [
-    '공고 제목1asdfasdfasdfasdfasdfasdf',
-    '공고 제목2',
-    '공고 제목2',
-    '공고 제목2',
-    '공고 제목2',
-    '공고 제목2',
-    '공고 제목2',
-  ],
-  '2025-05-07': ['공고 제목3'],
-}
-
 function Calendar() {
   const [dateList, setDateList] = useState<Record<string, string[]>>({})
 
@@ -32,9 +19,13 @@ function Calendar() {
     })
   }
 
-  const testCalendar = async () => {
+  // 달력의 데이터를 불러오는 함수
+  const loadCalendarData = async () => {
+    // 현재 로그인하는 시간을 고려하여 1.1초 딜레이 생성
+    // 추후 삭제 예정
     await delay(1100)
 
+    // 달력 데이터 불러오기
     const calendarData = api
       .get('/api/recruit')
       .then((res) => {
@@ -44,39 +35,40 @@ function Calendar() {
         return null
       })
 
+    // dateList를 업데이트 할 새로운 객체
     let newDateList = { ...dateList }
 
+    // 불러온 데이터를 바탕으로 newDateList를 업데이트
     for (const date of (await calendarData).content) {
       const nowDate = date.startDate
-      const nowDateDataList = dateList[nowDate] ?? []
+      const nowDateDataList = newDateList[nowDate] ?? []
       const newNowDateDataList = [...nowDateDataList, date.name]
 
-      console.log(nowDate, nowDateDataList, newNowDateDataList)
-
+      // 지속적은 업데이트
       newDateList = {
         ...newDateList,
         [nowDate]: newNowDateDataList,
       }
-
-      console.log(newDateList)
     }
 
-    console.log(newDateList)
-
+    // 최종적으로 완성된 newDateList를 dateList로 설정(state)
     setDateList(newDateList)
-    console.log(dateList)
   }
 
+  // 달력 데이터는 캘린더 로드 시에 한 번만 이벤트가 발생하도록 설정
   useEffect(() => {
-    testCalendar()
+    loadCalendarData()
   }, [])
 
+  // 달력에 사용될 컴포넌트
   const tileContent = ({ date, view }: { date: Date; view: string }) => {
     if (view !== 'month') return null // 월간 뷰에서만 렌더링
 
+    // 날짜를 통해 key값 추출
     const key = format(date, 'yyyy-MM-dd')
     const items = dateList[key] || []
 
+    // chip 컴포넌트(분리해도 됨)
     return (
       <div className="mt-1 space-y-2">
         {items.map((item, idx) => (
@@ -109,7 +101,7 @@ function Calendar() {
         showNeighboringMonth={true}
         className={tm('hidden', 'md:block')}
       />
-      {Object.keys(schedule).map((item, idx) => {
+      {Object.keys(dateList).map((item, idx) => {
         return (
           <div
             key={idx}
@@ -123,7 +115,7 @@ function Calendar() {
             >
               {item}
             </span>
-            {schedule[item].map((list, index) => {
+            {dateList[item].map((list, index) => {
               return (
                 <button
                   type="button"
