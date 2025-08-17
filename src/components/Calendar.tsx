@@ -58,7 +58,7 @@ function Calendar() {
         [nowDate]: newNowDateDataList,
       }
 
-      console.log(newDateList + 'ㅁㄴㅇㄹ')
+      console.log(newDateList)
     }
 
     console.log(newDateList)
@@ -75,7 +75,7 @@ function Calendar() {
     if (view !== 'month') return null // 월간 뷰에서만 렌더링
 
     const key = format(date, 'yyyy-MM-dd')
-    const items = schedule[key] || []
+    const items = dateList[key] || []
 
     return (
       <div className="mt-1 space-y-2">
