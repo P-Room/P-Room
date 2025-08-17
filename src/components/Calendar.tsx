@@ -44,11 +44,26 @@ function Calendar() {
         return null
       })
 
-    console.log((await calendarData).content)
+    let newDateList = { ...dateList }
+
+    for (const date of (await calendarData).content) {
+      const nowDate = date.startDate
+      const nowDateDataList = dateList[nowDate] ?? []
+      const newNowDateDataList = [...nowDateDataList, date.name]
+
+      newDateList = {
+        ...newDateList,
+        [nowDate]: newNowDateDataList,
+      }
+    }
+
+    setDateList(newDateList)
   }
 
   useEffect(() => {
     testCalendar()
+
+    console.log(dateList)
   }, [])
 
   const tileContent = ({ date, view }: { date: Date; view: string }) => {
