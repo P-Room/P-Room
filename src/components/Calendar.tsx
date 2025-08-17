@@ -57,6 +57,8 @@ function Calendar() {
         ...newDateList,
         [nowDate]: newNowDateDataList,
       }
+
+      console.log(newDateList + 'ㅁㄴㅇㄹ')
     }
 
     console.log(newDateList)
