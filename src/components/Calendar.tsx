@@ -8,19 +8,6 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import api from '@/lib/axios'
 
-const schedule: Record<string, string[]> = {
-  '2025-05-01': [
-    '공고 제목1asdfasdfasdfasdfasdfasdf',
-    '공고 제목2',
-    '공고 제목2',
-    '공고 제목2',
-    '공고 제목2',
-    '공고 제목2',
-    '공고 제목2',
-  ],
-  '2025-05-07': ['공고 제목3'],
-}
-
 function Calendar() {
   const [dateList, setDateList] = useState<Record<string, string[]>>({})
 
@@ -48,7 +35,7 @@ function Calendar() {
 
     for (const date of (await calendarData).content) {
       const nowDate = date.startDate
-      const nowDateDataList = dateList[nowDate] ?? []
+      const nowDateDataList = newDateList[nowDate] ?? []
       const newNowDateDataList = [...nowDateDataList, date.name]
 
       console.log(nowDate, nowDateDataList, newNowDateDataList)
@@ -109,7 +96,7 @@ function Calendar() {
         showNeighboringMonth={true}
         className={tm('hidden', 'md:block')}
       />
-      {Object.keys(schedule).map((item, idx) => {
+      {Object.keys(dateList).map((item, idx) => {
         return (
           <div
             key={idx}
@@ -123,7 +110,7 @@ function Calendar() {
             >
               {item}
             </span>
-            {schedule[item].map((list, index) => {
+            {dateList[item].map((list, index) => {
               return (
                 <button
                   type="button"
