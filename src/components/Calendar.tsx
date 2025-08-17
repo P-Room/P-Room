@@ -44,7 +44,7 @@ function Calendar() {
         return null
       })
 
-    console.log(calendarData)
+    console.log((await calendarData).content)
   }
 
   useEffect(() => {
