@@ -51,11 +51,15 @@ function Calendar() {
       const nowDateDataList = dateList[nowDate] ?? []
       const newNowDateDataList = [...nowDateDataList, date.name]
 
+      console.log(nowDate, nowDateDataList, newNowDateDataList)
+
       newDateList = {
         ...newDateList,
         [nowDate]: newNowDateDataList,
       }
     }
+
+    console.log(newDateList)
 
     setDateList(newDateList)
     console.log(dateList)
