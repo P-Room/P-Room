@@ -22,7 +22,7 @@ const schedule: Record<string, string[]> = {
 }
 
 function Calendar() {
-  const [dateList, setDateList] = useState<Record<string, string>>({})
+  const [dateList, setDateList] = useState<Record<string, string[]>>({})
 
   const delay = async (ms: number) => {
     return new Promise((res) => {
