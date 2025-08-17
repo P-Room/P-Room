@@ -58,12 +58,11 @@ function Calendar() {
     }
 
     setDateList(newDateList)
+    console.log(dateList)
   }
 
   useEffect(() => {
     testCalendar()
-
-    console.log(dateList)
   }, [])
 
   const tileContent = ({ date, view }: { date: Date; view: string }) => {
