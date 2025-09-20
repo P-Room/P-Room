@@ -4,6 +4,7 @@ import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
 import React, { ChangeEvent, useRef, useState, useEffect } from 'react'
 import HashTag from './HashTag'
+import useResumeTextStore from '@/store/ResumeTextStore'
 
 function ResumeDetail() {
   // 문항의 길이와 id를 저장하는 상태
@@ -12,13 +13,26 @@ function ResumeDetail() {
   >([])
   // 문항 추가 버튼
   const detailAddButton = useRef<HTMLButtonElement>(null)
+  const { resumeTextList, setResumeTextList } = useResumeTextStore()
 
   // 길이를 실시간으로 체크하는 함수(각각의 상태를 구분해야함)
   const handleCheckContentLength = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const nextDetailList = detailList.map((item) => {
-      return item.id === Number(e.target.id.split(' ')[0])
-        ? { ...item, contentLength: e.target.value.length }
-        : item
+    let saveText = false
+
+    const nextDetailList = detailList.map((item, idx) => {
+      if (item.id === Number(e.target.id.split(' ')[0])) {
+        if (!saveText) {
+          const textList = resumeTextList
+          textList[idx] = e.target.value
+          console.log(textList)
+          setResumeTextList(textList)
+
+          saveText = true
+        }
+        return { ...item, contentLength: e.target.value.length }
+      } else {
+        return item
+      }
     })
 
     setDetailList(nextDetailList)
