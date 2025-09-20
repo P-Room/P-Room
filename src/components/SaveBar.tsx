@@ -10,6 +10,10 @@ function SaveBar() {
     router.push('/')
   }
 
+  const handleSaveResume = () => {
+    console.log(1)
+  }
+
   return (
     <div
       className={tm(
@@ -38,6 +42,7 @@ function SaveBar() {
           'hover:scale-105 duration-150',
           'p-2 text-white'
         )}
+        onClick={handleSaveResume}
       >
         저장하기
       </button>
