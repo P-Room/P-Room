@@ -9,6 +9,8 @@ interface ResumeTextStoreStates {
 
 interface ResumeTextStoreActions {
   setResumeTextList: (input: string[]) => void
+  setHashTagsList: (input: string[][]) => void
+  setResumeTitleList: (input: string[]) => void
 }
 
 type ResumeTextStoreProps = ResumeTextStoreStates & ResumeTextStoreActions
