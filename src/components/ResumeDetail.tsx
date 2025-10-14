@@ -13,7 +13,12 @@ function ResumeDetail() {
   >([])
   // 문항 추가 버튼
   const detailAddButton = useRef<HTMLButtonElement>(null)
-  const { resumeTextList, setResumeTextList } = useResumeTextStore()
+  const {
+    resumeTextList,
+    resumeListTitle,
+    setResumeTextList,
+    setResumeTitleList,
+  } = useResumeTextStore()
 
   // 길이를 실시간으로 체크하는 함수(각각의 상태를 구분해야함)
   const handleCheckContentLength = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -24,7 +29,6 @@ function ResumeDetail() {
         if (!saveText) {
           const textList = resumeTextList
           textList[idx] = e.target.value
-          console.log(textList)
           setResumeTextList(textList)
 
           saveText = true
@@ -36,6 +40,23 @@ function ResumeDetail() {
     })
 
     setDetailList(nextDetailList)
+  }
+
+  const handleSaveTitleList = (e: ChangeEvent<HTMLInputElement>) => {
+    let saveTitle = false
+
+    detailList.map((item, idx) => {
+      if (item.id === Number(e.target.id.split(' ')[0])) {
+        if (!saveTitle) {
+          const titleList = resumeListTitle
+          titleList[idx] = e.target.value
+          setResumeTitleList(titleList)
+          console.log(titleList)
+
+          saveTitle = true
+        }
+      }
+    })
   }
 
   // 추가버튼을 클릭 시 발생할 이벤트(항목이 5개가 되었다면 버튼 삭제)
@@ -77,6 +98,7 @@ function ResumeDetail() {
                 'text-primary font-bold rounded-lg',
                 'focus:outline-primary'
               )}
+              onChange={handleSaveTitleList}
             />
           </div>
           <HashTag id={item.id + ''} />
