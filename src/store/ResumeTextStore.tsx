@@ -17,7 +17,7 @@ type ResumeTextStoreProps = ResumeTextStoreStates & ResumeTextStoreActions
 
 const useResumeTextStore = create<ResumeTextStoreProps>((set) => ({
   resumeTextList: [],
-  hashTags: [],
+  hashTags: [[]],
   resumeInfo: [],
   resumeListTitle: [],
 

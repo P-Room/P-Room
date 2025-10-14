@@ -101,7 +101,7 @@ function ResumeDetail() {
               onChange={handleSaveTitleList}
             />
           </div>
-          <HashTag id={item.id + ''} />
+          <HashTag id={idx + ''} />
           <label htmlFor={`${item.id} textarea`} className="sr-only">
             내용을 입력해주세요
           </label>
