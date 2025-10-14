@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 interface ResumeTextStoreStates {
   resumeTextList: string[]
-  hashTags: string[]
+  hashTags: string[][]
   resumeInfo: string[]
   resumeListTitle: string[]
 }
@@ -22,6 +22,16 @@ const useResumeTextStore = create<ResumeTextStoreProps>((set) => ({
   setResumeTextList: (input: string[]) =>
     set(() => ({
       resumeTextList: input,
+    })),
+
+  setHashTagsList: (input: string[][]) =>
+    set(() => ({
+      hashTags: input,
+    })),
+
+  setResumeTitleList: (input: string[]) =>
+    set(() => ({
+      resumeListTitle: input,
     })),
 }))
 
