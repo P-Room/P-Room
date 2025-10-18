@@ -2,6 +2,8 @@
 
 import { tm } from '@/utils/tw-merge'
 import { useRouter } from 'next/navigation'
+import useResumeInfoStore from '@/store/ResumeInfoStore'
+import useResumeTextStore from '@/store/ResumeTextStore'
 
 function SaveBar() {
   const router = useRouter()
@@ -10,8 +12,26 @@ function SaveBar() {
     router.push('/')
   }
 
+  const { resumeTextList, hashTags, resumeListTitle } = useResumeTextStore()
+  const {
+    resumeCompany,
+    resumeLink,
+    resumeDuty,
+    resumeRequire,
+    resumeDueDate,
+  } = useResumeInfoStore()
+
   const handleSaveResume = () => {
-    console.log(1)
+    console.log(
+      resumeTextList,
+      hashTags,
+      resumeListTitle,
+      resumeCompany,
+      resumeLink,
+      resumeDuty,
+      resumeRequire,
+      resumeDueDate
+    )
   }
 
   return (

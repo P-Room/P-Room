@@ -3,7 +3,6 @@ import { create } from 'zustand'
 interface ResumeTextStoreStates {
   resumeTextList: string[]
   hashTags: string[][]
-  resumeInfo: string[]
   resumeListTitle: string[]
 }
 
@@ -18,7 +17,6 @@ type ResumeTextStoreProps = ResumeTextStoreStates & ResumeTextStoreActions
 const useResumeTextStore = create<ResumeTextStoreProps>((set) => ({
   resumeTextList: [],
   hashTags: Array.from({ length: 5 }, () => []),
-  resumeInfo: [],
   resumeListTitle: [],
 
   setResumeTextList: (input: string[]) =>
