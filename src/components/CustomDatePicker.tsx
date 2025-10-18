@@ -3,6 +3,7 @@ import { forwardRef, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import { ko } from 'date-fns/locale/ko'
 import 'react-datepicker/dist/react-datepicker.css'
+import useResumeInfoStore from './../store/ResumeInfoStore'
 
 interface CustomDatePickerProps {
   sort: '기간'
@@ -33,10 +34,12 @@ function CustomDatePicker({ sort }: CustomDatePickerProps) {
     [Date | null, Date | null]
   >([null, null])
   const [startDate, endDate] = selectedDates
+  const { setResumeDueDate } = useResumeInfoStore()
 
   const handleSetSelectedDates = (date: [Date | null, Date | null]) => {
     setSelectedDates(date)
-    console.log(date)
+
+    setResumeDueDate(date)
   }
 
   return (

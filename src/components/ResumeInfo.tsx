@@ -5,12 +5,17 @@ import Image from 'next/image'
 import 'react-datepicker/dist/react-datepicker.css'
 import CustomDatePicker from './CustomDatePicker'
 import CustomDropdown from './CustomDropdown'
+import useResumeInfoStore from '@/store/ResumeInfoStore'
+import { ChangeEvent } from 'react'
 
 interface ResumeInfoProps {
   sort: '기업' | '공고 링크' | '직무' | '요구 경력' | '기간'
 }
 
 function ResumeInfo({ sort }: ResumeInfoProps) {
+  const { setResumeCompany, setResumeLink, setResumeDuty } =
+    useResumeInfoStore()
+
   let src: string = 'company'
   switch (sort) {
     case '기업':
@@ -30,8 +35,14 @@ function ResumeInfo({ sort }: ResumeInfoProps) {
       break
   }
 
-  const handleSetInfo = () => {
-    console.log(1)
+  const handleSetInfo = (e: ChangeEvent<HTMLInputElement>) => {
+    if (sort === '기업') {
+      setResumeCompany(e.target.value)
+    } else if (sort === '공고 링크') {
+      setResumeLink(e.target.value)
+    } else {
+      setResumeDuty(e.target.value)
+    }
   }
 
   return (
@@ -60,7 +71,7 @@ function ResumeInfo({ sort }: ResumeInfoProps) {
           id={sort}
           placeholder={`${sort} 정보를 입력해주세요.`}
           className={tm('py-1 px-1 w-4/5')}
-          onChange={handleSetInfo}
+          onChange={(input) => handleSetInfo(input)}
         />
       )}
     </div>

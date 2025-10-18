@@ -1,14 +1,16 @@
 import { ChangeEvent, useState } from 'react'
+import useResumeInfoStore from '@/store/ResumeInfoStore'
 
 function CustomDropdown({ ...restProps }: React.ComponentProps<'select'>) {
   const [career, setCareer] = useState<'인턴' | '신입' | '경력' | 'null'>(
     'null'
   )
+  const { setResumeRequire } = useResumeInfoStore()
 
   const changeValue = (e: ChangeEvent<HTMLSelectElement>) => {
     setCareer(e.target.value as '인턴' | '신입' | '경력')
 
-    console.log(e.target.value)
+    setResumeRequire(e.target.value)
   }
 
   return (
