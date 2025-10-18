@@ -39,7 +39,13 @@ function HashTag({ id }: React.ComponentProps<'input'>) {
 
   // 해쉬태그를 목록에서 제거하는 이벤트
   const removeTag = (index: number) => {
-    setTags(tags.filter((_, i) => i !== index))
+    setTags(tags.filter((_, idx) => idx !== index))
+
+    const nextHashTagsList = hashTags
+    nextHashTagsList[Number(id)] = hashTags[Number(id)].filter(
+      (_, idx) => idx !== index
+    )
+    setHashTagsList(nextHashTagsList)
   }
 
   return (
