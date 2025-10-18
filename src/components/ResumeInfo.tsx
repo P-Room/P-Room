@@ -30,6 +30,10 @@ function ResumeInfo({ sort }: ResumeInfoProps) {
       break
   }
 
+  const handleSetInfo = () => {
+    console.log(1)
+  }
+
   return (
     <div
       className={tm(
@@ -56,6 +60,7 @@ function ResumeInfo({ sort }: ResumeInfoProps) {
           id={sort}
           placeholder={`${sort} 정보를 입력해주세요.`}
           className={tm('py-1 px-1 w-4/5')}
+          onChange={handleSetInfo}
         />
       )}
     </div>

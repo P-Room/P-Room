@@ -1,16 +1,20 @@
 import { ChangeEvent, useState } from 'react'
 
 function CustomDropdown({ ...restProps }: React.ComponentProps<'select'>) {
-  const [, setCareer] = useState<'인턴' | '신입' | '경력' | 'null'>('null')
+  const [career, setCareer] = useState<'인턴' | '신입' | '경력' | 'null'>(
+    'null'
+  )
 
   const changeValue = (e: ChangeEvent<HTMLSelectElement>) => {
     setCareer(e.target.value as '인턴' | '신입' | '경력')
+
+    console.log(e.target.value)
   }
 
   return (
     <select
       {...restProps}
-      value={'null'}
+      value={career}
       onChange={(data) => changeValue(data)}
     >
       <option disabled value={'null'} className="text-gray-500">

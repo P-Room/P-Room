@@ -34,6 +34,11 @@ function CustomDatePicker({ sort }: CustomDatePickerProps) {
   >([null, null])
   const [startDate, endDate] = selectedDates
 
+  const handleSetSelectedDates = (date: [Date | null, Date | null]) => {
+    setSelectedDates(date)
+    console.log(date)
+  }
+
   return (
     <DatePicker
       locale={ko}
@@ -42,7 +47,7 @@ function CustomDatePicker({ sort }: CustomDatePickerProps) {
       placeholderText={`${sort} 정보를 입력해주세요.`}
       startDate={startDate}
       endDate={endDate}
-      onChange={(date) => setSelectedDates(date)}
+      onChange={(date) => handleSetSelectedDates(date)}
       customInput={<CustomInput placeholder={`${sort} 정보를 입력해주세요.`} />}
       shouldCloseOnSelect
       wrapperClassName="w-4/5"
