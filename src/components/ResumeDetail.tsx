@@ -51,7 +51,6 @@ function ResumeDetail() {
           const titleList = resumeListTitle
           titleList[idx] = e.target.value
           setResumeTitleList(titleList)
-          console.log(titleList)
 
           saveTitle = true
         }
