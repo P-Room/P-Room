@@ -4,6 +4,7 @@ import { tm } from '@/utils/tw-merge'
 import Image from 'next/image'
 import React, { ChangeEvent, useRef, useState, useEffect } from 'react'
 import HashTag from './HashTag'
+import useResumeTextStore from '@/store/ResumeTextStore'
 
 function ResumeDetail() {
   // 문항의 길이와 id를 저장하는 상태
@@ -12,16 +13,49 @@ function ResumeDetail() {
   >([])
   // 문항 추가 버튼
   const detailAddButton = useRef<HTMLButtonElement>(null)
+  const {
+    resumeTextList,
+    resumeListTitle,
+    setResumeTextList,
+    setResumeTitleList,
+  } = useResumeTextStore()
 
   // 길이를 실시간으로 체크하는 함수(각각의 상태를 구분해야함)
   const handleCheckContentLength = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const nextDetailList = detailList.map((item) => {
-      return item.id === Number(e.target.id.split(' ')[0])
-        ? { ...item, contentLength: e.target.value.length }
-        : item
+    let saveText = false
+
+    const nextDetailList = detailList.map((item, idx) => {
+      if (item.id === Number(e.target.id.split(' ')[0])) {
+        if (!saveText) {
+          const textList = resumeTextList
+          textList[idx] = e.target.value
+          setResumeTextList(textList)
+
+          saveText = true
+        }
+        return { ...item, contentLength: e.target.value.length }
+      } else {
+        return item
+      }
     })
 
     setDetailList(nextDetailList)
+  }
+
+  const handleSaveTitleList = (e: ChangeEvent<HTMLInputElement>) => {
+    let saveTitle = false
+
+    detailList.map((item, idx) => {
+      if (item.id === Number(e.target.id.split(' ')[0])) {
+        if (!saveTitle) {
+          const titleList = resumeListTitle
+          titleList[idx] = e.target.value
+          setResumeTitleList(titleList)
+
+          saveTitle = true
+        }
+      }
+    })
   }
 
   // 추가버튼을 클릭 시 발생할 이벤트(항목이 5개가 되었다면 버튼 삭제)
@@ -63,9 +97,10 @@ function ResumeDetail() {
                 'text-primary font-bold rounded-lg',
                 'focus:outline-primary'
               )}
+              onChange={handleSaveTitleList}
             />
           </div>
-          <HashTag id={item.id + ''} />
+          <HashTag id={idx + ''} />
           <label htmlFor={`${item.id} textarea`} className="sr-only">
             내용을 입력해주세요
           </label>

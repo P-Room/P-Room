@@ -1,5 +1,6 @@
 'use client'
 
+import useResumeTextStore from '@/store/ResumeTextStore'
 import { tm } from '@/utils/tw-merge'
 import { useState, KeyboardEvent, ChangeEvent } from 'react'
 
@@ -7,6 +8,7 @@ function HashTag({ id }: React.ComponentProps<'input'>) {
   // 해쉬태그들과 값을 받아오는 상태
   const [tags, setTags] = useState<string[]>([])
   const [inputValue, setInputValue] = useState('')
+  const { hashTags, setHashTagsList } = useResumeTextStore()
 
   // 엔터키나 쉼표키를 누르게 되면 발생하는 이벤트
   const handleInputTag = (text: string) => {
@@ -23,6 +25,10 @@ function HashTag({ id }: React.ComponentProps<'input'>) {
       e.preventDefault()
       handleInputTag(inputValue)
       setInputValue('')
+
+      const nextHashTagsList = hashTags
+      nextHashTagsList[Number(id)].push(inputValue)
+      setHashTagsList(nextHashTagsList)
     }
   }
 
@@ -33,7 +39,13 @@ function HashTag({ id }: React.ComponentProps<'input'>) {
 
   // 해쉬태그를 목록에서 제거하는 이벤트
   const removeTag = (index: number) => {
-    setTags(tags.filter((_, i) => i !== index))
+    setTags(tags.filter((_, idx) => idx !== index))
+
+    const nextHashTagsList = hashTags
+    nextHashTagsList[Number(id)] = hashTags[Number(id)].filter(
+      (_, idx) => idx !== index
+    )
+    setHashTagsList(nextHashTagsList)
   }
 
   return (

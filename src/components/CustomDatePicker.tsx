@@ -3,6 +3,7 @@ import { forwardRef, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import { ko } from 'date-fns/locale/ko'
 import 'react-datepicker/dist/react-datepicker.css'
+import useResumeInfoStore from './../store/ResumeInfoStore'
 
 interface CustomDatePickerProps {
   sort: '기간'
@@ -33,6 +34,13 @@ function CustomDatePicker({ sort }: CustomDatePickerProps) {
     [Date | null, Date | null]
   >([null, null])
   const [startDate, endDate] = selectedDates
+  const { setResumeDueDate } = useResumeInfoStore()
+
+  const handleSetSelectedDates = (date: [Date | null, Date | null]) => {
+    setSelectedDates(date)
+
+    setResumeDueDate(date)
+  }
 
   return (
     <DatePicker
@@ -42,7 +50,7 @@ function CustomDatePicker({ sort }: CustomDatePickerProps) {
       placeholderText={`${sort} 정보를 입력해주세요.`}
       startDate={startDate}
       endDate={endDate}
-      onChange={(date) => setSelectedDates(date)}
+      onChange={(date) => handleSetSelectedDates(date)}
       customInput={<CustomInput placeholder={`${sort} 정보를 입력해주세요.`} />}
       shouldCloseOnSelect
       wrapperClassName="w-4/5"

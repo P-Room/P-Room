@@ -2,12 +2,47 @@
 
 import { tm } from '@/utils/tw-merge'
 import { useRouter } from 'next/navigation'
+import useResumeInfoStore from '@/store/ResumeInfoStore'
+import useResumeTextStore from '@/store/ResumeTextStore'
+import api from '@/lib/axios'
 
 function SaveBar() {
   const router = useRouter()
 
   const handleMoveHome = () => {
     router.push('/')
+  }
+
+  const { resumeTextList, hashTags, resumeListTitle } = useResumeTextStore()
+  const {
+    resumeCompany,
+    resumeLink,
+    resumeDuty,
+    resumeRequire,
+    resumeDueDate,
+  } = useResumeInfoStore()
+
+  const handleSaveResume = () => {
+    console.log(
+      resumeTextList,
+      hashTags,
+      resumeListTitle,
+      resumeCompany,
+      resumeLink,
+      resumeDuty,
+      resumeRequire,
+      resumeDueDate
+    )
+
+    api
+      .post('/api/recruit/insert', {
+        name: resumeCompany,
+        link: resumeLink,
+        startDate: resumeDueDate[0],
+        deadline: resumeDueDate[1],
+        cond: resumeDuty,
+      })
+      .then((res) => console.log(res.data))
   }
 
   return (
@@ -38,6 +73,7 @@ function SaveBar() {
           'hover:scale-105 duration-150',
           'p-2 text-white'
         )}
+        onClick={handleSaveResume}
       >
         저장하기
       </button>
