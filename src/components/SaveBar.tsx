@@ -4,6 +4,7 @@ import { tm } from '@/utils/tw-merge'
 import { useRouter } from 'next/navigation'
 import useResumeInfoStore from '@/store/ResumeInfoStore'
 import useResumeTextStore from '@/store/ResumeTextStore'
+import api from '@/lib/axios'
 
 function SaveBar() {
   const router = useRouter()
@@ -32,6 +33,16 @@ function SaveBar() {
       resumeRequire,
       resumeDueDate
     )
+
+    api
+      .post('/api/recruit/insert', {
+        name: resumeCompany,
+        link: resumeLink,
+        startDate: resumeDueDate[0],
+        deadline: resumeDueDate[1],
+        cond: resumeDuty,
+      })
+      .then((res) => console.log(res.data))
   }
 
   return (
