@@ -27,7 +27,7 @@ public class Recruitment {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column()
     private String company;
 
     private String link;
